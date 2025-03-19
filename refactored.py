@@ -75,3 +75,39 @@ ax.set_ylabel("Count")
 ax.set_title("Species Count by RL Category")
 st.pyplot(fig)
 
+
+
+
+
+
+
+
+
+
+st.subheader("Species Distribution by RL Category")
+rl_counts = df["RL Category"].value_counts()
+fig, ax = plt.subplots()
+sns.barplot(x=rl_counts.index, y=rl_counts.values, ax=ax)
+ax.set_xlabel("Red List Category")
+ax.set_ylabel("Count")
+ax.set_title("Species Count by RL Category")
+st.pyplot(fig)
+TOMORROW: 11:32 am
+% of endangered species by family
+st.subheader("Percentage of Endangered Species by Family")
+
+family_endangered_percentage = []
+zero_endangered_data = []
+for family, total_count in family_counts.items():
+    endangered_count = endangered_counts.get(family, 0)
+    percentage = (endangered_count / total_count) * 100
+    if percentage > 0:
+        family_endangered_percentage.append((family, percentage))
+    else:
+        zero_endangered_data.append((family, percentage))
+convert to dataframe
+family_endangered_df = pd.DataFrame(family_endangered_percentage, columns=["Family", "Endangered Percentage"])
+family_endangered_df = family_endangered_df.sort_values("Endangered Percentage", ascending=False)
+
+zero_endangered_df = pd.DataFrame(zero_endangered_data, columns=["Family", "Endangered Percentage"])
+zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", ascending=False)
