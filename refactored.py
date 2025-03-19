@@ -56,5 +56,22 @@ if common_name_filter:
     filtered_df = filtered_df[filtered_df["Common name"].str.contains(common_name_filter, case=False, na=False)]
 if scientific_name_filter:
     filtered_df = filtered_df[filtered_df["Scientific name"].str.contains(scientific_name_filter, case=False, na=False)]
+# main title
+st.title("Biodiversity Data Analysis")
+# display data table
+st.subheader("Filtered Species Data")
+st.dataframe(filtered_df)
+st.caption("Source: https://datazone.birdlife.org/search")
+image_url = "https://raw.githubusercontent.com/Chong0317/refactored/main/red_list_categories.png"
+st.image(image_url, caption="What each Red List Category means.", use_container_width=True)
+st.caption("Source: https://datazone.birdlife.org/about-our-science/the-iucn-red-list#categories-and-criteria")
 
+st.subheader("Species Distribution by RL Category")
+rl_counts = df["RL Category"].value_counts()
+fig, ax = plt.subplots()
+sns.barplot(x=rl_counts.index, y=rl_counts.values, ax=ax)
+ax.set_xlabel("Red List Category")
+ax.set_ylabel("Count")
+ax.set_title("Species Count by RL Category")
+st.pyplot(fig)
 
