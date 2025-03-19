@@ -111,3 +111,23 @@ family_endangered_df = family_endangered_df.sort_values("Endangered Percentage",
 
 zero_endangered_df = pd.DataFrame(zero_endangered_data, columns=["Family", "Endangered Percentage"])
 zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", ascending=False)
+# Pie Chart
+st.subheader("Ecosystem Distribution")
+eco_counts = {
+    "Terrestrial": df["Ecosystem - Terrestrial"].sum(),
+    "Freshwater": df["Ecosystem - Freshwater"].sum(),
+    "Marine": df["Ecosystem - Marine"].sum()
+}
+fig, ax = plt.subplots()
+ax.pie(eco_counts.values(), labels=eco_counts.keys(), autopct='%1.1f%%', startangle=90, colors=["#ff9999", "#66faff", "#99ff99"])
+ax.set_title("Ecosystem Distribution")
+st.pyplot(fig)
+# to display families that are 100% and 0% endangered
+fully_endangered_families = []
+zero_endangered_families = []
+endangered_categories = ["VU", "EN", "CR"]
+family_counts = df["Family"].value_counts().to_dict()
+endangered_counts = df[df["RL Category"].isin(endangered_categories)]["Family"].value_counts().to_dict()
+
+
+
