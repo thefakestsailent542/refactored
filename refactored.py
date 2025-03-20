@@ -131,3 +131,38 @@ endangered_counts = df[df["RL Category"].isin(endangered_categories)]["Family"].
 
 
 
+for family, total_count in family_counts.items():
+    endangered_count = endangered_counts.get(family, 0)
+    percentage = (endangered_count / total_count) * 100
+    if percentage == 100:
+        fully_endangered_families.append(family)
+    if percentage == 0:
+        zero_endangered_families.append(family)
+
+st.header("Endangered Species Summary:")
+st.write("There are way too many 0% endangered species. Hence, we have hidden it for better readability. :)")
+
+
+
+
+if fully_endangered_families:
+    st.subheader("Families that are 100% Endangered:")
+    st.write(", ".join(fully_endangered_families))
+
+st.subheader("Families that are 0% Endangered:")
+st.write(", ".join(zero_endangered_families))
+
+show_zero_endangered = st.checkbox("Show Families that are 0% Endangered and Their Graphs")
+
+st.markdown("---")  # vis divider bfr grpahs
+# to display the uploaded PNG image from GitHub below the endangered species summary (similar to the one at the top)
+st.header("Threats Impacting Globally Threatened Species")
+st.subheader("These are the potential factors that led to the dwindling population. From the image below, it is evident that agriculture and aquaculture a.k.a farming and fishing are the primary threats to globally threatened species.")
+# VS code provided that last sentence for me (SOMEHOW???)
+image_url = "https://raw.githubusercontent.com/Chong0317/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
+st.image(image_url, caption="Globally threatened species impacted by each threat", use_container_width=True)
+st.caption("Source: https://datazone.birdlife.org/search")
+
+
+
+
