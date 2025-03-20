@@ -77,40 +77,6 @@ st.pyplot(fig)
 
 
 
-
-
-
-
-
-
-
-st.subheader("Species Distribution by RL Category")
-rl_counts = df["RL Category"].value_counts()
-fig, ax = plt.subplots()
-sns.barplot(x=rl_counts.index, y=rl_counts.values, ax=ax)
-ax.set_xlabel("Red List Category")
-ax.set_ylabel("Count")
-ax.set_title("Species Count by RL Category")
-st.pyplot(fig)
-
-% of endangered species by family
-st.subheader("Percentage of Endangered Species by Family")
-
-family_endangered_percentage = []
-zero_endangered_data = []
-for family, total_count in family_counts.items():
-    endangered_count = endangered_counts.get(family, 0)
-    percentage = (endangered_count / total_count) * 100
-    if percentage > 0:
-        family_endangered_percentage.append((family, percentage))
-    else:
-        zero_endangered_data.append((family, percentage))
-convert to dataframe
-family_endangered_df = pd.DataFrame(family_endangered_percentage, columns=["Family", "Endangered Percentage"])
-family_endangered_df = family_endangered_df.sort_values("Endangered Percentage", ascending=False)
-
-zero_endangered_df = pd.DataFrame(zero_endangered_data, columns=["Family", "Endangered Percentage"])
-zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", ascending=False)
 # Pie Chart
 st.subheader("Ecosystem Distribution")
 eco_counts = {
@@ -119,17 +85,17 @@ eco_counts = {
     "Marine": df["Ecosystem - Marine"].sum()
 }
 fig, ax = plt.subplots()
-ax.pie(eco_counts.values(), labels=eco_counts.keys(), autopct='%1.1f%%', startangle=90, colors=["#ff9999", "#66faff", "#99ff99"])
+ax.pie(eco_counts.values(), labels=eco_counts.keys(), autopct='%1.1f%%', startangle=90, colors=["#ff9999", "#66b3ff", "#99ff99"])
 ax.set_title("Ecosystem Distribution")
 st.pyplot(fig)
+
+
 # to display families that are 100% and 0% endangered
 fully_endangered_families = []
 zero_endangered_families = []
 endangered_categories = ["VU", "EN", "CR"]
 family_counts = df["Family"].value_counts().to_dict()
 endangered_counts = df[df["RL Category"].isin(endangered_categories)]["Family"].value_counts().to_dict()
-
-
 
 for family, total_count in family_counts.items():
     endangered_count = endangered_counts.get(family, 0)
@@ -141,9 +107,6 @@ for family, total_count in family_counts.items():
 
 st.header("Endangered Species Summary:")
 st.write("There are way too many 0% endangered species. Hence, we have hidden it for better readability. :)")
-
-
-
 
 if fully_endangered_families:
     st.subheader("Families that are 100% Endangered:")
@@ -158,10 +121,13 @@ st.markdown("---")  # vis divider bfr grpahs
 # to display the uploaded PNG image from GitHub below the endangered species summary (similar to the one at the top)
 st.header("Threats Impacting Globally Threatened Species")
 st.subheader("These are the potential factors that led to the dwindling population. From the image below, it is evident that agriculture and aquaculture a.k.a farming and fishing are the primary threats to globally threatened species.")
-
-image_url = "https://raw.githubusercontent.com/thefakestsailent/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
+# VS code provided that last sentence for me (SOMEHOW???)
+image_url = "https://raw.githubusercontent.com/thefakestsailent542/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
 st.image(image_url, caption="Globally threatened species impacted by each threat", use_container_width=True)
 st.caption("Source: https://datazone.birdlife.org/search")
+
+
+
 # % of endangered species by family
 st.subheader("Percentage of Endangered Species by Family")
 
@@ -180,9 +146,6 @@ family_endangered_df = family_endangered_df.sort_values("Endangered Percentage",
 
 zero_endangered_df = pd.DataFrame(zero_endangered_data, columns=["Family", "Endangered Percentage"])
 zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", ascending=False)
-
-
-
 # split into multiple smaller graphs (it had like 300+ families on the x-axis and was unreadaable)
 batch_size = 15
 num_batches = (len(family_endangered_df) + batch_size - 1) // batch_size
@@ -224,6 +187,4 @@ if show_zero_endangered and not zero_endangered_df.empty:
                 ax.set_ylim(0, 100)
                 ax.set_title(f"Non-Endangered Species Percentage (Batch {batch_index+1})")
         st.pyplot(fig)
-
-
 
