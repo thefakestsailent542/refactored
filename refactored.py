@@ -183,3 +183,47 @@ zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", asc
 
 
 
+# split into multiple smaller graphs (it had like 300+ families on the x-axis and was unreadaable)
+batch_size = 15
+num_batches = (len(family_endangered_df) + batch_size - 1) // batch_size
+for i in range(0, num_batches, 2):
+    fig, axes = plt.subplots(1, min(2, num_batches - i), figsize=(16, 5))
+
+    if num_batches - i == 1:
+        axes = [axes]
+
+    for j in range(len(axes)):
+        batch_index = i + j
+        subset_df = family_endangered_df.iloc[batch_index * batch_size: (batch_index + 1) * batch_size]
+
+        if not subset_df.empty:
+            ax = axes[j]
+            sns.barplot(data=subset_df, x="Family", y="Endangered Percentage", ax=ax)
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+            ax.set_xlabel("Family")
+            ax.set_ylabel("% of Endangered Species")
+            ax.set_ylim(0, 100)
+            ax.set_title(f"Endangered Species Percentage (Batch {batch_index+1})")
+
+    st.pyplot(fig)
+
+if show_zero_endangered and not zero_endangered_df.empty:
+    num_batches_zero = (len(zero_endangered_df) + batch_size - 1) // batch_size
+    for i in range(0, num_batches_zero, 2):
+        fig, axes = plt.subplots(1, min(2, num_batches_zero - i), figsize=(16, 5))
+        if num_batches_zero - i == 1:
+            axes = [axes]
+        for j, ax in enumerate(axes):
+            batch_index = i + j
+            subset_df = zero_endangered_df.iloc[batch_index * batch_size: (batch_index + 1) * batch_size]
+            if not subset_df.empty:
+                sns.barplot(data=subset_df, x="Family", y="Endangered Percentage", ax=ax)
+                ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+                ax.set_xlabel("Family")
+                ax.set_ylabel("% of Endangered Species")
+                ax.set_ylim(0, 100)
+                ax.set_title(f"Non-Endangered Species Percentage (Batch {batch_index+1})")
+        st.pyplot(fig)
+
+
+
