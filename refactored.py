@@ -162,7 +162,24 @@ st.subheader("These are the potential factors that led to the dwindling populati
 image_url = "https://raw.githubusercontent.com/Chong0317/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
 st.image(image_url, caption="Globally threatened species impacted by each threat", use_container_width=True)
 st.caption("Source: https://datazone.birdlife.org/search")
+# % of endangered species by family
+st.subheader("Percentage of Endangered Species by Family")
 
+family_endangered_percentage = []
+zero_endangered_data = []
+for family, total_count in family_counts.items():
+    endangered_count = endangered_counts.get(family, 0)
+    percentage = (endangered_count / total_count) * 100
+    if percentage > 0:
+        family_endangered_percentage.append((family, percentage))
+    else:
+        zero_endangered_data.append((family, percentage))
+# convert to dataframe
+family_endangered_df = pd.DataFrame(family_endangered_percentage, columns=["Family", "Endangered Percentage"])
+family_endangered_df = family_endangered_df.sort_values("Endangered Percentage", ascending=False)
+
+zero_endangered_df = pd.DataFrame(zero_endangered_data, columns=["Family", "Endangered Percentage"])
+zero_endangered_df = zero_endangered_df.sort_values("Endangered Percentage", ascending=False)
 
 
 
