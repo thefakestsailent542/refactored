@@ -29,10 +29,11 @@ Code editor (VS Code highly recommended)
 Download VS Code: https://code.visualstudio.com/Download
 
 
-1. Download refactored.py under releases
+1. Download refactored.py and species-filter-results(1).csv under releases
 
-1b. Note: After that, make sure to do cd (Path of folder where you keep the suhe.py file)> In this case, I will keep it in the Desktop folder for simplicity's sake. 
+1b. Note: After that, make sure to do cd (Path of folder where you keep both the refactored.py file and the .csv file)> In this case, I will keep it in the Desktop folder for simplicity's sake. 
 Hence, I will do cd desktop in this case.
+Also make sure to put both files in the same folder.
 
 
 2. Open refactored.py using VS Code and press Ctrl+Shift+` to open the terminal. Make sure to trust the file (if there is a pop up) so that everything runs smoothly.
