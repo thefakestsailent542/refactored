@@ -62,7 +62,7 @@ st.title("Biodiversity Data Analysis")
 st.subheader("Filtered Species Data")
 st.dataframe(filtered_df)
 st.caption("Source: https://datazone.birdlife.org/search")
-image_url = "https://raw.githubusercontent.com/Chong0317/refactored/main/red_list_categories.png"
+image_url = "https://raw.githubusercontent.com/thefakestsailent542/refactored/main/red_list_categories.png"
 st.image(image_url, caption="What each Red List Category means.", use_container_width=True)
 st.caption("Source: https://datazone.birdlife.org/about-our-science/the-iucn-red-list#categories-and-criteria")
 
@@ -92,7 +92,7 @@ ax.set_xlabel("Red List Category")
 ax.set_ylabel("Count")
 ax.set_title("Species Count by RL Category")
 st.pyplot(fig)
-TOMORROW: 11:32 am
+
 % of endangered species by family
 st.subheader("Percentage of Endangered Species by Family")
 
@@ -158,8 +158,8 @@ st.markdown("---")  # vis divider bfr grpahs
 # to display the uploaded PNG image from GitHub below the endangered species summary (similar to the one at the top)
 st.header("Threats Impacting Globally Threatened Species")
 st.subheader("These are the potential factors that led to the dwindling population. From the image below, it is evident that agriculture and aquaculture a.k.a farming and fishing are the primary threats to globally threatened species.")
-# VS code provided that last sentence for me (SOMEHOW???)
-image_url = "https://raw.githubusercontent.com/Chong0317/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
+
+image_url = "https://raw.githubusercontent.com/thefakestsailent/refactored/main/Globally-threatened-species-impacted-by-each-threat.png"
 st.image(image_url, caption="Globally threatened species impacted by each threat", use_container_width=True)
 st.caption("Source: https://datazone.birdlife.org/search")
 # % of endangered species by family
