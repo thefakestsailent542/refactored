@@ -18,11 +18,11 @@ How to install Streamlit: https://docs.streamlit.io/get-started/installation/com
 Install python normally first
 
 
-Since VS Code terminal uses CMD prompt from the OS itself (Assuming Windows), do "pip install streamlit" on CMD prompt- NOT python
+Since VS Code terminal uses CMD prompt from the OS itself (Assuming Windows), do "py -m pip install streamlit" on CMD prompt- NOT python
 
 How to open CMD prompt: press the search button on Windows, then type in CMD and press open to open command prompt.
 
-Then, as matplotlib and seaborn are dependencies, do pip install matplotlib and pip install seaborn on a separate CMD window.]
+Then, as matplotlib and seaborn are dependencies, do py -m pip install matplotlib and py -m pip install seaborn on a separate CMD window.]
 
 
 Code editor (VS Code highly recommended)
@@ -44,7 +44,7 @@ Also make sure to put both files in the same folder.
 
 3b. NOTE: VERY IMPORTANT but complex stuff!!! Please look at 1b before typing in cd Desktop!!! If you want to keep the refactored.py folder in another folder, do cd "YOUR PATH HERE" instead, with your path here being the path to the refactored.py folder. For example, if I want to keep the python folder in a folder named "hackathonproject" on my Desktop, put the refactored.py folder in it, then right click on the hackathon folder and press copy as path if you are on Windows 11. Then, type in cd and paste the path down. In this EXAMPLE given, it will be cd "C:\Users\Aaron\Desktop\hackathonproject\" and MAKE SURE TO DELETE THE QUOTES!!!! However, it is easiest to just leave the file in the Desktop instead as you only need to type cd Desktop. )
    
-4. Type in "python -m streamlit run refactored.py" in the same terminal and press enter.
+4. Type in "py -m streamlit run refactored.py" in the same terminal and press enter.
    
    
 5. Congratulations! A tab should open on your default browser which will display our Streamlit app to display our project. :)
