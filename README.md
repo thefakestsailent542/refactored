@@ -29,7 +29,7 @@ Code editor (VS Code highly recommended)
 Download VS Code: https://code.visualstudio.com/Download
 
 
-1. Download refactored.py and species-filter-results(1).csv under releases
+1. Download refactored.py and species-filter-results.csv under releases
 
 1b. Note: After that, make sure to do cd (Path of folder where you keep both the refactored.py file and the .csv file)> In this case, I will keep it in the Desktop folder for simplicity's sake. 
 Hence, I will do cd desktop in this case.
@@ -42,7 +42,7 @@ Also make sure to put both files in the same folder.
 
 3. Type in "cd Desktop" in the VS Code terminal and press enter.
 
-3b. NOTE: VERY IMPORTANT but complex stuff!!! Please look at 1b before typing in cd Desktop!!! If you want to keep the refactored.py folder in another folder, do cd "YOUR PATH HERE" instead, with your path here being the path to the refactored.py folder. For example, if I want to keep the python folder in a folder named "hackathonproject" on my Desktop, put the suhe.py folder in it, then right click on the hackathon folder and press copy as path if you are on Windows 11. Then, type in cd and paste the path down. In this EXAMPLE given, it will be cd "C:\Users\Aaron\Desktop\hackathonproject\" and MAKE SURE TO DELETE THE QUOTES!!!! However, it is easiest to just leave the file in the Desktop instead as you only need to type cd Desktop. )
+3b. NOTE: VERY IMPORTANT but complex stuff!!! Please look at 1b before typing in cd Desktop!!! If you want to keep the refactored.py folder in another folder, do cd "YOUR PATH HERE" instead, with your path here being the path to the refactored.py folder. For example, if I want to keep the python folder in a folder named "hackathonproject" on my Desktop, put the refactored.py folder in it, then right click on the hackathon folder and press copy as path if you are on Windows 11. Then, type in cd and paste the path down. In this EXAMPLE given, it will be cd "C:\Users\Aaron\Desktop\hackathonproject\" and MAKE SURE TO DELETE THE QUOTES!!!! However, it is easiest to just leave the file in the Desktop instead as you only need to type cd Desktop. )
    
 4. Type in "python -m streamlit run refactored.py" in the same terminal and press enter.
    
